@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "outDir": "./src",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*.tsx", "src/**/*.ts"],
+    "exclude": ["node_modules"]
+  }

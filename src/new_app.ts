@@ -9,7 +9,7 @@ app.get('/welcome/:city', (req: Request, res: Response) => {
         return res.status(400).send('Необходимо указать город');
     }
    
-    const greetingMessage = ` Привет Катя, ${city}!`
+    const greetingMessage = ` Привет всем, ${city}!`
     res.send({message: greetingMessage});
 });
 

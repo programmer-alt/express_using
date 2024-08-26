@@ -16,7 +16,7 @@
   },
   "scripts": {
    
-    "start": " nodemon src/new_app.js "
+    "start": "nodemon"
    
   },
   

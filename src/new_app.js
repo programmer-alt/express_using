@@ -6,7 +6,7 @@ app.get('/welcome/:city', (req, res) => {
     if (!city) {
         return res.status(400).send('Необходимо указать город');
     }
-    const greetingMessage = ` Привет Катя, ${city}!`;
+    const greetingMessage = ` Привет всем, ${city}!`;
     res.send({ message: greetingMessage });
 });
 app.listen(port, () => {

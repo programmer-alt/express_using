@@ -2,6 +2,6 @@
     "watch": ["src"],
     "ext": "ts,json",
     "ignore": [],
-    "exec": "tsc && node I:\\Express\\my_new_Express_project\\src\\new_app.js"
+    "exec": "tsc && node f:\\Express\\my_new_Express_project\\src\\main.js"
     
   }

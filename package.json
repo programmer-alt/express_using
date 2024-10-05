@@ -9,6 +9,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.10",
     "@types/pg": "^8.11.7",
+    "@types/react": "^18.3.11",
     "express": "^4.19.2",
     "nodemon": "^3.1.4",
     "nodemon-ts": "^1.0.1",

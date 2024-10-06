@@ -11,15 +11,12 @@ app.get("/welcome/:city", (req: Request, res: Response) => {
    res.send({message: greetingMessage});
 })
 
-app.get("/city/drop", async (req: Request, res: Response) => {
+app.get("/city/list", async (req: Request, res: Response) => {
     try {
         const { rows} = await pool.query('SELECT city_name From cities');
-    const citiesHtml  = rows.map( row => `<li>${row.city_name}</li>`).join('');
- const html = `
- <ul>
- ${citiesHtml}
- </ul>`
-res.send(html);
+    const cities  = rows.map( row => row.city_name);
+
+res.send(cities);
     } catch( err) {
         console.error(err);
         res.status(500).send("Произошла ошибка");

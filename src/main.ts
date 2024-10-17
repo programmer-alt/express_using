@@ -1,7 +1,8 @@
-import app from "./app.js";
+import App from "./app.js";
+
 
 
 const port = 3000;
-app.listen( port, () => {
+App.listen( port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 })

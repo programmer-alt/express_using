@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "jsx": "react",
       "target": "es6",
       "module": "NodeNext",
       "moduleResolution": "NodeNext",
@@ -7,6 +8,6 @@
       "strict": true,
       "esModuleInterop": true
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["node_modules"]
   }

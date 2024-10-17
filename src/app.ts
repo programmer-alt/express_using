@@ -3,6 +3,7 @@ import pool from "./db.js";
 const app = express();
 import cors from "cors";
 app.use(cors());
+ postgres-feature
 app.use(express.json());
 app.get("/welcome/:city", (req: Request, res: Response) => {
   const { city } = req.params;
@@ -22,6 +23,7 @@ app.get("/city/list", async (req: Request, res: Response) => {
   }
 });
 export default app;
+ postgres-feature
 
 app.delete('/cities/:id', async (req: Request, res: Response) => {
   
@@ -48,3 +50,5 @@ app.post('/cities/add', async (req: Request, res: Response) => {
     res.status(500).send("Произошла ошибка");
   }
 });
+
+

@@ -49,5 +49,5 @@ Node.js
 * **GitHub** [ссылка на репозиторий](https://github.com/programmer-alt/express_using.git)
 
 ### О себе
- В процессе обучения!
+В процессе обучения!
  

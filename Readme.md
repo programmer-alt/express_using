@@ -40,5 +40,5 @@
  Имя: Programmer-alt
 Email: [modstils88@mail.ru]
 GitHub ссылка на репозиторий: [(https://github.com/programmer-alt/express_using.git)]
-О себе: В процессе обучения
+О себе: В процессе обучения!
  

@@ -11,6 +11,7 @@
 * Языки программирования:  Typescript (Node.js)
 * Фреймворки: Express.js
 * Базы данных: PostgreSQL
+* CORS (Cross-Origin Resource Sharing) - для разрешения доступа к API с клиентской части, находящейся в другом домене
 
 ### Функции
 

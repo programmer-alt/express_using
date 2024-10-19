@@ -14,6 +14,8 @@ Typescript
 Express.js
 #### Базы данных:
 PostgreSQL
+#### Runtime среды:
+Node.js
 #### CORS (Cross-Origin Resource Sharing)
 Для разрешения доступа к API с клиентской части, находящейся в другом домене
 
@@ -47,5 +49,5 @@ PostgreSQL
 * **GitHub** [ссылка на репозиторий](https://github.com/programmer-alt/express_using.git)
 
 ### О себе
- В процессе обучения!
+В процессе обучения!
  

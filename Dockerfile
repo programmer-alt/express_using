@@ -7,17 +7,14 @@ WORKDIR /app
 # Копируем зависимости
 COPY package*.json ./
 
+# Устанавливаем переменные среды
+ENV NODE_ENV=production
+
 # Устанавливаем зависимости
 RUN npm install
 
 # Копируем исходный код
-COPY . .
-
-# Компилируем TypeScript
-RUN npm run build
-
-# Устанавливаем переменные среды
-ENV NODE_ENV=production
+COPY src/*.js ./src/
 
 # Открываем порт
 EXPOSE 3000

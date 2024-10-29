@@ -14,7 +14,7 @@ ENV NODE_ENV=production
 RUN npm install
 
 # Копируем исходный код
-COPY src/*.js ./src/
+COPY . .
 
 # Открываем порт
 EXPOSE 3000

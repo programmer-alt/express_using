@@ -3,7 +3,7 @@ import pool from "./db.js";
 const app = express();
 import cors from "cors";
 app.use(cors());
- postgres-feature
+
 app.use(express.json());
 app.get("/welcome/:city", (req: Request, res: Response) => {
   const { city } = req.params;

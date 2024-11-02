@@ -1,0 +1,18 @@
+FROM postgres:latest
+
+# Устанавливаем переменные окружения для конфигурации базы данных
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=1
+ENV POSTGRES_DB=my_users
+
+# Меняем порт по умолчанию с 5432 на 5432 (внутренний порт)
+ENV POSTGRES_PORT=5432
+
+# Копируем файл конфигурации postgres (если нужно изменить настройки postgres)
+# COPY postgresql.conf /etc/postgresql/postgresql.conf
+
+# Экспозируем порт 5432 (внутренний порт в контейнере)
+EXPOSE 5432
+
+# Опционально: добавляем скрипт инициализации базы данных
+# COPY init.sql /docker-entrypoint-initdb.d/

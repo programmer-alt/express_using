@@ -1,6 +1,9 @@
 # Используем базовый образ Node.js
 FROM node:18
 
+# Устанавливаем инструменты диагностики
+RUN apt-get update && apt-get install -y netcat-traditional iputils-ping curl
+
 # Устанавливаем рабочий каталог
 WORKDIR /app
 
@@ -13,7 +16,10 @@ ENV NODE_ENV=production
 # Устанавливаем зависимости
 RUN npm install
 
-# Копируем исходный код
+# Копируем собранные файлы из папки build
+COPY build ./build
+
+# Копируем остальные файлы проекта
 COPY . .
 
 # Открываем порт

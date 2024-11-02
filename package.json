@@ -18,7 +18,8 @@
   },
   "scripts": {
     "start:dev": "nodemon",
-    "start:prod": "node src/main.js",
+    "start:prod": "node build/main.js",
+    "startDocker": "NODE_ENV=production node build/main.js",
     "build": "tsc"
   },
   "babel": {

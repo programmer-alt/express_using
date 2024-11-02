@@ -1,12 +1,6 @@
 import pg from "pg";
+import configPostgresConnect from "./configPostgresConnect.js";
 const { Pool } = pg;
 
-const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "my_users",
-    password: "1",
-    port: 5433,
-});
-
+const pool = new Pool(configPostgresConnect.db);
 export default pool;

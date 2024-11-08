@@ -1,5 +1,6 @@
 FROM postgres:latest
-
+COPY output_file.sql /docker-entrypoint-initdb.d/
+RUN chmod 0755 /docker-entrypoint-initdb.d/*
 # Устанавливаем переменные окружения для конфигурации базы данных
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=1
@@ -7,12 +8,12 @@ ENV POSTGRES_DB=my_users
 
 # Меняем порт по умолчанию с 5432 на 5432 (внутренний порт)
 ENV POSTGRES_PORT=5432
-
-# Копируем файл конфигурации postgres (если нужно изменить настройки postgres)
-# COPY postgresql.conf /etc/postgresql/postgresql.conf
-
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD pg_isready -U postgres -d my_users || exit 1
+# Добавляем wait-for-it для ожидания готовности базы данных
+# ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /wait-for-it.sh
+# RUN chmod +x /wait-for-it.sh
 # Экспозируем порт 5432 (внутренний порт в контейнере)
 EXPOSE 5432
 
-# Опционально: добавляем скрипт инициализации базы данных
-# COPY init.sql /docker-entrypoint-initdb.d/
+

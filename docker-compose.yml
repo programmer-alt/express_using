@@ -4,6 +4,44 @@ services:
     ports:
       - "3001:3000"
     environment:
-      - NODE_ENV=production
+      DATABASE_URL: "postgres://postgres:1@PostgresDb:5432/my_users"
+    depends_on:
+      PostgresDb:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  PostgresDb:
+    image: my-postgres-image:v1.0.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1"
+      POSTGRES_DB: my_users
+    ports:
+      - "5433:5432"
     volumes:
-      - ./build:/app/build  
+      - db_data:/var/lib/postgresql/data   
+    networks:
+      - app-network
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    image: frontent-image:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:

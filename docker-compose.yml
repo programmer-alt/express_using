@@ -10,7 +10,8 @@ services:
     environment:
       DATABASE_URL: "postgres://postgres:1@PostgresDb:5432/my_users"
     depends_on:
-      - PostgresDb
+      PostgresDb:
+        condition: service_healthy
     networks:
       - app-network
 
@@ -21,11 +22,17 @@ services:
       POSTGRES_PASSWORD: "1"
       POSTGRES_DB: my_users
     ports:
-      - "5433:5432"  # Здесь указан порт 5433, как и в переменной DATABASE_URL
+      - "5433:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data   
     networks:
       - app-network
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   frontend:
     image: frontent-image:latest

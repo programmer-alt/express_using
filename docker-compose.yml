@@ -1,8 +1,12 @@
+
+
 services:
   backend:
-    image: cities-backend-image:v1.0.2  
+    build:
+      context: G:\Express\my_new_Express_project
+      dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - "3000:3000"
     environment:
       DATABASE_URL: "postgres://postgres:1@PostgresDb:5432/my_users"
     depends_on:

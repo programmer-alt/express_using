@@ -1,6 +1,7 @@
 import pg from "pg";
-const { Pool } = pg;
 import configPostgresConnect from "./configPostgresConnect.js";
+const { Pool } = pg;
+
 
 const pool = new Pool(configPostgresConnect.db);
 const connectWithRetry = async () => {

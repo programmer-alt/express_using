@@ -1,3 +1,5 @@
+
+# Устанавливаем переменные окружения для PostgreSQL
 FROM postgres:latest
 COPY src/DataBase/output_file.sql /docker-entrypoint-initdb.d/
 RUN chmod 0755 /docker-entrypoint-initdb.d/*
@@ -5,6 +7,7 @@ RUN chmod 0755 /docker-entrypoint-initdb.d/*
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=1
 ENV POSTGRES_DB=my_users
+
 
 # Меняем порт по умолчанию с 5432 на 5432 (внутренний порт)
 ENV POSTGRES_PORT=5432
@@ -15,5 +18,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 # RUN chmod +x /wait-for-it.sh
 # Экспозируем порт 5432 (внутренний порт в контейнере)
 EXPOSE 5432
+
 
 

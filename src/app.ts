@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import pool from "./db.js";
+import db from "./db.js";
 const app = express();
 import cors from "cors";
 app.use(cors());
@@ -15,7 +15,7 @@ app.get("/welcome/:city", (req: Request, res: Response) => {
 });
 app.get("/city/list", async (req: Request, res: Response) => {
   try {
-    const { rows } = await pool.query("SELECT id, city_name FROM cities");
+    const { rows } = await db.pool.query("SELECT id, city_name FROM cities");
     res.json(rows);
   } catch (err) {
     console.error(err);
@@ -26,7 +26,7 @@ export default app;
 app.delete("/cities/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const deleteCity = await pool.query("DELETE FROM cities WHERE id = $1", [
+    const deleteCity = await db.pool.query("DELETE FROM cities WHERE id = $1", [
       id,
     ]);
     res.json(deleteCity);
@@ -39,7 +39,7 @@ app.post("/cities/add", async (req: Request, res: Response) => {
   console.log("получен запрос на добавление города");
   const { city_name } = req.body;
   try {
-    const addCity = await pool.query(
+    const addCity = await db.pool.query(
       "INSERT INTO cities (city_name) Values ($1) RETURNING id",
       [city_name]
     );
